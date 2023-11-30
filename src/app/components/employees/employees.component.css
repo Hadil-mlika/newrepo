@@ -1,0 +1,40 @@
+.custom-column {
+    width: 40%;
+  }
+  
+  .btn-success{
+  margin-left:  92%;
+  }
+  .btn-warning{
+    width: 12%;
+    margin-left:  89%;
+  
+  }
+
+
+  app-sidebar {
+    margin-bottom: 10px; /* Ajoute une marge en bas à app-sidebar */
+  }
+  
+  .search-area {
+    margin-top: 10px; /* Ajoute une marge en haut à l'élément avec la classe search-area */
+  }
+  
+  
+
+  .search-area {
+    margin-left: auto; /* Met la barre de recherche à droite */
+    width: 6cm; /* Largeur de 3 cm */
+    height: 1cm; /* Hauteur de 1 cm */
+  }
+  
+  .input-group-text {
+    cursor: pointer; /* Change le curseur en pointeur pour indiquer que c'est cliquable */
+  }
+  
+  /* Ajoute un peu de marge à droite pour l'espacement */
+  .search-area {
+    margin-right: 20px;
+  }
+  
+  

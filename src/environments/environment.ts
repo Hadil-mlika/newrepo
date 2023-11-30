@@ -4,7 +4,12 @@
 
 export const environment = {
   production: true,
-  apiBaseUrl: 'Http://localhost:8080'
+
+  // Utilisez le proxy pour contourner les restrictions CORS
+
+  apiBaseUrl: 'Http://localhost:8080',
+  apiBaseUrl2: 'Http://localhost:9099',
+
 };
 
 /*

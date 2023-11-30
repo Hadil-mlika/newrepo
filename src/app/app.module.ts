@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AdminDashboardMainComponent } from './admin-dashboard/admin-dashboard-main/admin-dashboard-main.component';
 import { RegisterEmployeesComponent } from './admin-dashboard/Employees/register-employees/register-employees.component';
 import { ViewEmployeesComponent } from './admin-dashboard/Employees/view-employees/view-employees.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -16,6 +16,7 @@ import { RequisitionComponent } from './requisition/requisition.component';
 import { ProviderComponent } from './provider/provider.component';
 import { HeaderComponent } from './header/header.component';
 import { CategoryComponent } from './category/category.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 
 @NgModule({
@@ -33,9 +34,11 @@ import { CategoryComponent } from './category/category.component';
     ProviderComponent,
     HeaderComponent,
     CategoryComponent,
+    EmployeesComponent,
   
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

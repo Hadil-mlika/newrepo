@@ -1,0 +1,269 @@
+<app-header></app-header>
+<app-sidebar> </app-sidebar>
+
+<div>
+  <!-- Affichez le bouton de déconnexion si l'utilisateur est connecté -->
+  <button type="button" class="btn btn-success" (click)="logout()">
+    Déconnexion
+  </button>
+</div>
+
+<div class="input-group search-area">
+  <input type="text" class="form-control" placeholder="Search here..." />
+</div>
+
+<!--**********************************
+      Content body start
+  ***********************************-->
+<div class="content-body">
+  <div class="container-fluid mh-auto">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body px-0">
+            <div class="table-responsive">
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="toggleForm()"
+              >
+                <i class="fa fa-plus"></i> Add
+              </button>
+              <table class="table table-sm mb-0 table-striped student-tbl">
+                <thead>
+                  <tr>
+                    <th class="custom-column">Name</th>
+
+                    <th class="custom-column">Email</th>
+                    <th class="custom-column">Role</th>
+                  </tr>
+                </thead>
+                <tbody id="customers">
+                  <tr
+                    class="btn-reveal-trigger"
+                    *ngFor="let employee of employees"
+                  >
+                    <td class="py-2">
+                      <h5 class="mb-0 fs--1">
+                        <span *ngIf="employee !== editingEmployee"
+                          >{{ employee.firstName }}
+                          {{ employee.lastName }}</span
+                        >
+                        <input
+                          *ngIf="employee === editingEmployee"
+                          type="text"
+                          class="form-control"
+                          [(ngModel)]="employee.firstName"
+                        />
+                        <input
+                          *ngIf="employee === editingEmployee"
+                          type="text"
+                          class="form-control"
+                          [(ngModel)]="employee.lastName"
+                        />
+                      </h5>
+                    </td>
+                    <td class="py-2">
+                      <span *ngIf="employee !== editingEmployee">{{
+                        employee.email
+                      }}</span>
+                      <input
+                        title="r"
+                        *ngIf="employee === editingEmployee"
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="employee.email"
+                      />
+                    </td>
+                    <td class="py-2">
+                      <h5 class="mb-0 fs--1">{{ employee.role }}</h5>
+                    </td>
+
+                    <td>
+                      <a
+                        class="btn btn-primary shadow btn-xs sharp me-1"
+                        (click)="setEditingEmployee(employee)"
+                        ><i class="fa fa-pencil"></i
+                      ></a>
+                      <a
+                        class="btn btn-secondary shadow btn-xs sharp me-1"
+                        (click)="UpdateEmployee(employee.id, employee)"
+                        ><i class="fa fa-recycle"></i
+                      ></a>
+                      <a
+                        class="btn btn-danger shadow btn-xs sharp"
+                        (click)="DeleteEmployee(employee.id)"
+                        ><i class="fa fa-trash"></i
+                      ></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- form -->
+              <div class="modal" [ngClass]="{ show: showForm }">
+                <div class="col-12">
+                  <form class="card" #addForm="ngForm" action="" id="wizard">
+                    <div class="card-header">
+                      <h4 class="card-title">Add employee</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="row form-material">
+                        <div class="col-xl-3 col-xxl-6 col-md-6 mb-3">
+                          <label class="form-label"
+                            >firstName<span
+                              style="
+                                color: rgb(180, 16, 16);
+                                font-size: 10px;
+                                font-style: italic;
+                              "
+                              >*</span
+                            ></label
+                          >
+
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="name"
+                            id="name"
+                            [(ngModel)]="employee.firstName"
+                            required
+                          />
+                        </div>
+                        <div class="col-xl-3 col-xxl-6 col-md-6 mb-3">
+                          <label class="form-label"
+                            >lastName<span
+                              style="
+                                color: rgb(180, 16, 16);
+                                font-size: 10px;
+                                font-style: italic;
+                              "
+                              >*</span
+                            ></label
+                          >
+
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="lastName"
+                            id="lastName"
+                            [(ngModel)]="employee.lastName"
+                            required
+                          />
+                        </div>
+                        <div class="col-xl-3 col-xxl-6 col-md-6 mb-3">
+                          <label class="form-label"
+                            >email<span
+                              style="
+                                color: rgb(180, 16, 16);
+                                font-size: 10px;
+                                font-style: italic;
+                              "
+                              >*</span
+                            ></label
+                          >
+
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="email"
+                            id="email"
+                            [(ngModel)]="employee.email"
+                            required
+                          />
+                        </div>
+                        <div class="col-xl-3 col-xxl-6 col-md-6 mb-3">
+                          <label class="form-label"
+                            >Role<span
+                              style="
+                                color: rgb(180, 16, 16);
+                                font-size: 10px;
+                                font-style: italic;
+                              "
+                              >*</span
+                            ></label
+                          >
+
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Role"
+                            id="role"
+                            [(ngModel)]="employee.role"
+                            required
+                          />
+                        </div>
+                        <div class="col-xl-3 col-xxl-6 col-md-6 mb-3">
+                          <label class="form-label"
+                            >password<span
+                              style="
+                                color: rgb(180, 16, 16);
+                                font-size: 10px;
+                                font-style: italic;
+                              "
+                              >*</span
+                            ></label
+                          >
+
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="password"
+                            id="password"
+                            [(ngModel)]="employee.password"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col">
+                          <button
+                            type="button"
+                            class="btn btn-warning"
+                            [disabled]="!addForm.valid"
+                            (click)="addEmployee(addForm)"
+                          >
+                            <i class="fa fa-plus"></i> Add
+                          </button>
+                        </div>
+                        <div class="col">
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="CloseForm(addForm)"
+                          >
+                            <i class="fa fa-close"></i> Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--**********************************
+      Content body end
+  ***********************************-->
+
+<!--**********************************
+      Footer start
+  ***********************************-->
+
+<!--**********************************
+      Footer end
+  ***********************************-->
+
+<!--**********************************
+     Support ticket button start
+  ***********************************-->
+
+<!--**********************************
+     Support ticket button end
+  ***********************************-->
