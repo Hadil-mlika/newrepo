@@ -1,49 +1,83 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Subject, takeUntil, debounceTime, switchMap, map } from 'rxjs';
 import { Category } from 'src/app/models/Category';
 import { EmployeeDTO } from 'src/app/models/employeesdto';
 import { AuthenticationService } from 'src/app/services/authService/authentication.service';
 
-import { EmployeesService } from 'src/app/services/employeesService/employees.service';
-
+import { EmployeesService } from 'src/app/ServiceEmployees/employeesService/employees.service';
+import { Departement } from 'src/app/models/Departement';
+import { DepartmentService } from 'src/app/ServiceEmployees/departementService/department.service';
+declare var $: any; // Déclaration de jQuery
 @Component({
   selector: 'app-employees',
-  
+
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css'],
 })
-export class EmployeesComponent implements OnInit {
 
+
+
+
+export class EmployeesComponent implements OnInit,AfterViewInit {
   searchQuery: string = ''; // Modèle de recherche
 
+  departements: Departement[] = [];
+
   employees: EmployeeDTO[] = [];
+
+  
   showForm = false;
   isEditing = false;
   employee: EmployeeDTO = {
     id: 0,
     firstName: '',
     lastName: '',
-    email: '',
+    email: "",
     role: '',
     password: '',
+    departmentId:0
   };
 
-
-
-  constructor(private employeeService: EmployeesService,private authService:AuthenticationService) {}
+  constructor(
+    private employeeService: EmployeesService,
+    private authService: AuthenticationService,
+    private departementService: DepartmentService
+  ) {}
 
   ngOnInit(): void {
     this.getAllEmployees();
 
-    
+    this.loadDepartements();
   }
+
+
+  ngAfterViewInit() {
+    // Initialisez Bootstrap SelectPicker après le rendu de la vue
+    $(document).ready(function () {
+      $('.selectpicker').selectpicker();
+    });
+  }
+  loadDepartements() {
+    // Appelez votre service pour récupérer les départements
+    this.departementService.getAllDepartments().subscribe(
+      (data) => {
+        // Mettez à jour la liste des départements
+        this.departements = data;
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des départements :', error);
+      }
+    );
+  }
+
+
+
 
   logout() {
     // Déconnectez l'utilisateur et redirigez-le vers la page de connexion
     this.authService.logout();
   }
-
 
   toggleForm() {
     this.showForm = !this.showForm; // Basculez entre afficher et masquer le formulaire
@@ -84,8 +118,8 @@ export class EmployeesComponent implements OnInit {
     }
   }
 
-  UpdateEmployee(idEmployee: number,employee: EmployeeDTO) {
-    this.employeeService.UpdateEmployee(idEmployee,employee).subscribe(
+  UpdateEmployee(idEmployee: number, employee: EmployeeDTO) {
+    this.employeeService.UpdateEmployee(idEmployee, employee).subscribe(
       () => {
         alert('successful update.');
       },
@@ -117,18 +151,16 @@ export class EmployeesComponent implements OnInit {
   //   this.editingEmployee = employee;
   // }
 
-
   // Dans votre classe de composant
-editingEmployee: EmployeeDTO| null = null;
+  editingEmployee: EmployeeDTO | null = null;
 
-setEditingEmployee(employee: EmployeeDTO| null): void {
-  // Si l'employé est déjà en cours d'édition, fermez le formulaire en le définissant sur null
-  if (this.editingEmployee === employee) {
-    this.editingEmployee = null;
-  } else {
-    // Sinon, ouvrez le formulaire pour l'employé cliqué
-    this.editingEmployee = employee;
+  setEditingEmployee(employee: EmployeeDTO | null): void {
+    // Si l'employé est déjà en cours d'édition, fermez le formulaire en le définissant sur null
+    if (this.editingEmployee === employee) {
+      this.editingEmployee = null;
+    } else {
+      // Sinon, ouvrez le formulaire pour l'employé cliqué
+      this.editingEmployee = employee;
+    }
   }
-}
-
 }

@@ -1,8 +1,20 @@
+.employee-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .employee-name {
+    font-weight: bold;
+  }
+  
+  .employee-email {
+    color: #555;
+  }
+  
 
 
-
-
-.custom-column {
+  .custom-column {
     width: 40%;
   }
   
@@ -42,14 +54,3 @@
   }
   
   
-
-
-
-  /* Style CSS pour la liste déroulante */
-select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}

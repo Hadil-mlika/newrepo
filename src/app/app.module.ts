@@ -17,6 +17,7 @@ import { ProviderComponent } from './provider/provider.component';
 import { HeaderComponent } from './header/header.component';
 import { CategoryComponent } from './category/category.component';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { DepartementComponent } from './components/Departements/departement/departement.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
     HeaderComponent,
     CategoryComponent,
     EmployeesComponent,
+    DepartementComponent,
   
   ],
   imports: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authService/authentication.service';
+import { AuthentifService } from '../ServiceEmployees/authentifService/authentif.service';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +13,20 @@ export class LoginComponent implements OnInit {
   password: string = '';
 
   constructor(
-    private authService: AuthenticationService,
+    private authentifService: AuthentifService,
     private router: Router
   ) {}
 
   ngOnInit(): void {}
 
   login(): void {
-    this.authService.authenticate(this.email, this.password).subscribe(
+    this.authentifService.authenticate(this.email, this.password).subscribe(
       (response) => {
         const token = response.token; 
         const msg=response.message;
         console.log(token);
         console.log(msg);
-        this.authService.saveToken(token);
+        this.authentifService.saveToken(token);
         this.router.navigate(['/employees']); // Redirigez l'utilisateur vers la page après la connexion
       },
       (error) => {

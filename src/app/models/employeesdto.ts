@@ -5,4 +5,5 @@ export interface EmployeeDTO {
   email: string;
   role: string;
   password: string;
+  departmentId:number;
 }

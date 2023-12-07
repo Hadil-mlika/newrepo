@@ -1,17 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthenticationRequest } from 'src/app/models/AuthenticationRequest';
 import { AuthenticationResponse } from 'src/app/models/AuthenticationResponse';
 import { Employee } from 'src/app/models/Employee';
 import { VerificationRequest } from 'src/app/models/VerificationRequest';
-import { EmployeeDTO } from 'src/app/models/employeesdto';
+import { AuthenticationService } from 'src/app/services/authService/authentication.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AuthenticationService {
+export class AuthentifService {
   private apiBaseUrl = environment.apiBaseUrl;
 
   private apiUrl = 'http://localhost:9099/auth';

@@ -11,6 +11,7 @@ import { ProductComponent } from './product/product.component';
 import { ProviderComponent } from './provider/provider.component';
 import { RegisterComponent } from './register/register.component';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { DepartementComponent } from './components/Departements/departement/departement.component';
 
 const routes: Routes = [
   {path:'admin-dashboard',component:AdminDashboardMainComponent,children:[
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'product',component:ProductComponent},
   {path:'providers',component:ProviderComponent},
   {path:'category',component:CategoryComponent},
-  {path:'employees',component:EmployeesComponent}
+  {path:'employees',component:EmployeesComponent},
+  {path:'departements',component:DepartementComponent}
 
 
 

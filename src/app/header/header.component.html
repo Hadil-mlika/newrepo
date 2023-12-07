@@ -2,9 +2,7 @@
         Preloader start
     ********************-->
 <div id="preloader">
-  <div>
-    <img src="assets/images/pre.gif" alt="" />
-  </div>
+  
 </div>
 <!--*******************
           Preloader end
@@ -470,10 +468,12 @@
                             alt=""
                           />
                           <div>
-                            <!-- <h6>Hanuman Prajapati</h6>
-                            <span>Web Designer</span> -->
+                
 
-                     
+                            <h6>{{ userName }}</h6>
+                          
+                            <span *ngIf="userEmail">{{ userEmail }}</span><br>
+                            <span>{{role}}</span>
                           </div>
                         </div>
                       </div>
