@@ -1,0 +1,64 @@
+<p>leave-request-form works!</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="text-align: center">
+      <div class="panel panel-info">
+        <div class="panel-heading">BASIC FORM</div>
+        <br />
+        <div class="panel-body">
+          <!-- leave-request-form.component.html -->
+
+          <form (submit)="submitLeaveRequest()">
+            <!-- Ajoutez les champs du formulaire pour la demande de congé -->
+            <label for="startDate">Date de début:</label>
+
+            <div class="form-group input-group">
+              <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+              <input
+                class="form-control"
+                type="date"
+                id="startDate"
+                placeholder="date debut"
+                [(ngModel)]="startDate"
+                required
+              />
+            </div>
+            <label for="endDate">Date de fin:</label>
+            <div class="form-group input-group">
+              <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+              <input
+                class="form-control"
+                type="date"
+                id="endDate"
+                placeholder="end date"
+                [(ngModel)]="endDate"
+                required
+              />
+            </div>
+
+            <label for="reason">Raison:</label>
+            <div class="form-group input-group">
+              <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+              <input
+                class="form-control"
+                type="reason"
+                id="reason"
+                placeholder="raison"
+                [(ngModel)]="reason"
+                required
+              />
+            </div>
+
+            <!-- Ajoutez d'autres champs du formulaire -->
+
+            <button type="submit" class="btn btn-info">
+              <strong>Soumettre la demande</strong>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

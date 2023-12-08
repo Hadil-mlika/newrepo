@@ -13,6 +13,8 @@ import { RegisterComponent } from './register/register.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { DepartementComponent } from './components/Departements/departement/departement.component';
 
+import { LeaveRequestFormComponent } from './components/LeaveRequest/leave-request-form/leave-request-form.component';
+
 const routes: Routes = [
   {path:'admin-dashboard',component:AdminDashboardMainComponent,children:[
     {path:'register-employees',component:RegisterEmployeesComponent},
@@ -25,7 +27,9 @@ const routes: Routes = [
   {path:'providers',component:ProviderComponent},
   {path:'category',component:CategoryComponent},
   {path:'employees',component:EmployeesComponent},
-  {path:'departements',component:DepartementComponent}
+  {path:'departements',component:DepartementComponent},
+
+  {path:'leaveRequest',component:LeaveRequestFormComponent}
 
 
 
